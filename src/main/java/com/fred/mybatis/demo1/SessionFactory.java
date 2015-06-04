@@ -16,7 +16,7 @@ public class SessionFactory {
 
     public static SqlSession getInstance() throws IOException {
 
-        String resource = "mybatis-config.xml";
+        String resource = "E:\\passport_idea\\mybatis\\src\\main\\java\\com\\fred\\mybatis\\demo1\\BlogMapper.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession session = sqlSessionFactory.openSession();
