@@ -2,8 +2,27 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.fred.mybatis.demo1.Blog">
+<mapper namespace="com.fred.mybatis.demo1.dao.BlogDao">
     <select id="selectBlog" resultType="Blog">
         select * from blog where id = #{id}
     </select>
+
+    <select id="selectBlogs" resultMap="listBlog">
+        select * from blog where id >= #{id}
+    </select>
+
+    <insert id="addBlog" parameterType="Blog"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into blog(content)
+        values(#{content})
+    </insert>
+
+    <update id="updateBlog" parameterType="Blog">
+        update blog set content=#{content}  where id=#{id}
+    </update>
+
+    <resultMap type="Blog" id="listBlog">
+        <id column="id" property="id"/>
+        <result column="content" property="content"/>
+    </resultMap>
 </mapper>
