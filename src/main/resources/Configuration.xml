@@ -20,6 +20,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/fred/mybatis/demo1/BlogMapper.xml"/>
+        <mapper resource="BlogMapper.xml"/>
     </mappers>
 </configuration>
