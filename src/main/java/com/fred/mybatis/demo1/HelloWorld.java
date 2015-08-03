@@ -57,7 +57,7 @@ public class HelloWorld {
             session2.close();
         }
 
-
+        //select list.
         SqlSession session3 = sqlSessionFactory.openSession();
         try {
             BlogDao blogDao = session3.getMapper(BlogDao.class);
@@ -73,7 +73,7 @@ public class HelloWorld {
             session3.close();
         }
 
-
+        //create
         SqlSession session4 = sqlSessionFactory.openSession();
         try {
             BlogDao blogDao = session4.getMapper(BlogDao.class);
@@ -86,6 +86,7 @@ public class HelloWorld {
             session4.close();
         }
 
+        //update
         SqlSession session5 = sqlSessionFactory.openSession();
         try {
             BlogDao blogDao = session5.getMapper(BlogDao.class);
@@ -98,6 +99,16 @@ public class HelloWorld {
             session5.commit();
         } finally {
             session5.close();
+        }
+
+        //delete
+        SqlSession session6 = sqlSessionFactory.openSession();
+        try {
+            BlogDao blogDao = session6.getMapper(BlogDao.class);
+            blogDao.deleteById(8);
+            session6.commit();
+        } finally {
+            session6.close();
         }
     }
 }

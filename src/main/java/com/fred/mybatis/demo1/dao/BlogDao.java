@@ -16,4 +16,6 @@ public interface BlogDao {
     void addBlog(Blog blog);
 
     void updateBlog(Blog blog);
+
+    void deleteById(int id);
 }
