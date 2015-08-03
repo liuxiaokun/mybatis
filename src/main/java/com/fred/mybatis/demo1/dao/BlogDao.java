@@ -5,7 +5,7 @@ import com.fred.mybatis.demo1.Blog;
 import java.util.List;
 
 /**
- * Created by liuxiaokun on 2015/6/5.
+ * create£¬update£¬delete action must be execute session.commit()
  */
 public interface BlogDao {
 

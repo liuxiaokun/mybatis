@@ -33,29 +33,34 @@ public class HelloWorld {
     }
 
     public static void main(String[] args) {
-        /*SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session1 = sqlSessionFactory.openSession();
         try {
-            Blog blog = (Blog) session.selectOne("org.fred.mybatis.demo1.Blog.selectBlog", 1);
+            /*
+                First parameter: namespace + id
+                com.fred.mybatis.demo1.dao.BlogDao + "." + selectBlog
+            */
+            Blog blog = session1.selectOne("com.fred.mybatis.demo1.dao.BlogDao.selectBlog", 1);
             System.out.println(blog.getId());
             System.out.println(blog.getContent());
         } finally {
-            session.close();
-        }*/
+            session1.close();
+        }
 
-        /*SqlSession session = sqlSessionFactory.openSession();
+        // use blogDao interface
+        SqlSession session2 = sqlSessionFactory.openSession();
         try {
-            BlogDao blogDao = session.getMapper(BlogDao.class);
+            BlogDao blogDao = session2.getMapper(BlogDao.class);
             Blog blog = blogDao.selectBlog(2);
             System.out.println(blog.getId());
             System.out.println(blog.getContent());
         } finally {
-            session.close();
-        }*/
+            session2.close();
+        }
 
 
-       /* SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session3 = sqlSessionFactory.openSession();
         try {
-            BlogDao blogDao = session.getMapper(BlogDao.class);
+            BlogDao blogDao = session3.getMapper(BlogDao.class);
             List<Blog> blogs = blogDao.selectBlogs(1);
 
             System.out.println(blogs.size());
@@ -65,33 +70,34 @@ public class HelloWorld {
                 System.out.println(tem.getContent());
             }
         } finally {
-            session.close();
-        }*/
+            session3.close();
+        }
 
 
-        /*SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session4 = sqlSessionFactory.openSession();
         try {
-            BlogDao blogDao = session.getMapper(BlogDao.class);
+            BlogDao blogDao = session4.getMapper(BlogDao.class);
             Blog blog = new Blog();
             blog.setContent("333333333333333333");
             blogDao.addBlog(blog);
             System.out.println(blog.getId());
-            session.commit();
+            session4.commit();
         } finally {
-            session.close();
-        }*/
+            session4.close();
+        }
 
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session5 = sqlSessionFactory.openSession();
         try {
-            BlogDao blogDao = session.getMapper(BlogDao.class);
+            BlogDao blogDao = session5.getMapper(BlogDao.class);
             Blog blog = new Blog();
             blog.setId(5);
             blog.setContent("55");
             blogDao.updateBlog(blog);
             System.out.println(blog.getId());
             System.out.println(blog.getContent());
+            session5.commit();
         } finally {
-            session.close();
+            session5.close();
         }
     }
 }
